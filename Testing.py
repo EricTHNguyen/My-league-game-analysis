@@ -1,5 +1,6 @@
 from riotwatcher import LolWatcher, ApiError
 import pandas as pd
+import numpy as np
 #global info
 api_key='RGAPI-724657ae-04b5-46e7-ba46-82bbe5bf152e'
 watcher= LolWatcher(api_key)
@@ -15,7 +16,8 @@ my_matches=watcher.match.matchlist_by_puuid("americas", me['puuid'],type='ranked
 match_detail=watcher.match.by_id("americas", my_matches[0])
 match_detail2=match_detail['info']
 match_detail3=match_detail2['participants']
-last_match_detail=match
+del match_detail3[0:8]
+
 print(match_detail3)
 participants=[]
 for row in match_detail['info']['participants']:
